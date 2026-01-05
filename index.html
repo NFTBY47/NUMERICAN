@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NUMERICAN — Магия чисел</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Статичное звёздное небо -->
+    <div class="star-field"></div>
+    
+    <div class="container">
+        <!-- Основной контент -->
+        <div class="content-wrapper">
+            <header class="header">
+                <h1 class="logo">NUMERICAN</h1>
+                <div class="logo-subtitle">Магия чисел</div>
+            </header>
+            
+            <main class="main-content">
+                <h2 class="title">
+                    <span class="line">Тайны Вселенной</span>
+                    <span class="line">в ваших числах</span>
+                </h2>
+                
+                <p class="subtitle">
+                    Раскройте скрытые смыслы вашей судьбы через древнее знание нумерологии, 
+                    усиленное магией искусственного интеллекта
+                </p>
+                
+                <div class="buttons-container">
+                    <button id="getReportBtn" class="btn btn-primary">
+                        <div class="btn-content">
+                            <i class="fas fa-crystal-ball"></i>
+                            <span class="btn-text">ПОЛУЧИТЬ РАСКЛАД</span>
+                        </div>
+                    </button>
+                    
+                    <button id="aboutBtn" class="btn btn-secondary">
+                        <div class="btn-content">
+                            <i class="fas fa-scroll"></i>
+                            <span class="btn-text">О ТАЙНЕ NUMERICAN</span>
+                        </div>
+                    </button>
+                </div>
+            </main>
+        </div>
+        
+        <!-- Попап -->
+        <div id="aboutPopup" class="popup">
+            <div class="popup-overlay"></div>
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h2><i class="fas fa-eye"></i> NUMERICAN — Откровение чисел</h2>
+                    <button id="closePopup" class="popup-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-body">
+                    <section class="popup-section">
+                        <h3><i class="fas fa-hat-wizard"></i> Суть NUMERICAN</h3>
+                        <p>Это портал в мир цифровых вибраций вашей сущности. Через древнюю мудрость нумерологии, пропущенную через призму искусственного интеллекта, мы находим скрытые паттерны вашего бытия.</p>
+                    </section>
+                    
+                    <section class="popup-section">
+                        <h3><i class="fas fa-magic"></i> Как это работает?</h3>
+                        <div class="steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Призыв чисел</h4>
+                                    <p>Ваша дата рождения пробуждает архетипические числа Судьбы, Души и Внешнего облика</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Созерцание паттернов</h4>
+                                    <p>Искусственный интеллект медитирует над сочетаниями и циклами ваших чисел</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Откровение</h4>
+                                    <p>Рождается уникальная карта вашего года с указанием благоприятных периодов и возможностей</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="popup-section">
+                        <h3><i class="fas fa-moon"></i> Философия</h3>
+                        <p>Мы не нарушаем волю судьбы, а освещаем тропинки, уже проложенные во тьме неизвестности. NUMERICAN — это фонарь в руках искателя.</p>
+                    </section>
+                    
+                    <section class="popup-section">
+                        <h3><i class="fas fa-lock"></i> Конфиденциальность</h3>
+                        <p>Ваши данные — священны. Дата рождения и имя используются единожды для анализа и затем удаляются.</p>
+                    </section>
+                    
+                    <div class="popup-footer">
+                        <p class="sacred-text">🔮 Только для тех, кто готов услышать шепот вселенной</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
