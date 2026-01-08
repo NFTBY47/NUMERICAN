@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NUMERICAN — Выбор расклада</title>
+    <link rel="stylesheet" href="choice-screen.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Фон -->
+    <div class="star-field"></div>
+    
+    <div class="container">
+        <!-- Хедер -->
+        <div class="header">
+            <button id="backToMainBtn" class="back-btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <h1 class="logo">NUMERICAN</h1>
+            <div class="header-spacer"></div>
+        </div>
+
+        <!-- Контент -->
+        <main class="main-content">
+            <!-- Карусель -->
+            <div class="carousel-wrapper">
+                <button class="carousel-arrow arrow-left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        <!-- Базовый пакет -->
+                        <div class="card" data-type="basic">
+                            <div class="card-badge free">Базовый</div>
+                            <h3 class="card-title">Обзор года</h3>
+                            <ul class="card-features">
+                                <li><i class="fas fa-star"></i> Ключевые события года</li>
+                                <li><i class="fas fa-compass"></i> Основные тенденции</li>
+                                <li><i class="fas fa-sun"></i> Благоприятные периоды</li>
+                                <li><i class="fas fa-eye"></i> Общие рекомендации</li>
+                            </ul>
+                            
+                            <div class="card-price-block">
+                                <div class="price-main">0 ₽</div>
+                            </div>
+                            
+                            <button class="card-bottom-btn btn-free">
+                                <span>Получить бесплатно</span>
+                            </button>
+                        </div>
+
+                        <!-- Расширенный пакет -->
+                        <div class="card" data-type="extended">
+                            <div class="card-badge extended">Расширенный</div>
+                            <h3 class="card-title">Глубинный анализ</h3>
+                            <ul class="card-features">
+                                <li><i class="fas fa-chart-pie"></i> Анализ по кварталам</li>
+                                <li><i class="fas fa-coins"></i> Финансы и карьера</li>
+                                <li><i class="fas fa-heart"></i> Личные отношения</li>
+                                <li><i class="fas fa-calendar-alt"></i> Месячные прогнозы</li>
+                            </ul>
+                            
+                            <div class="card-price-block">
+                                <div class="price-main">399 ₽</div>
+                            </div>
+                            
+                            <button class="card-bottom-btn btn-basic">
+                                <span>Приобрести анализ</span>
+                            </button>
+                        </div>
+
+                        <!-- Премиум пакет -->
+                        <div class="card" data-type="premium">
+                            <div class="card-badge premium">Премиум</div>
+                            <h3 class="card-title">Всё включено</h3>
+                            <ul class="card-features">
+                                <li><i class="fas fa-crown"></i> Полный нумерологический анализ</li>
+                                <li><i class="fas fa-yin-yang"></i> Кармические задачи</li>
+                                <li><i class="fas fa-magic"></i> Ритуалы по месяцам</li>
+                                <li><i class="fas fa-lock"></i> Доступ в закрытое сообщество</li>
+                                <li><i class="fas fa-spa"></i> Персональные практики</li>
+                            </ul>
+                            
+                            <div class="card-price-block">
+                                <div class="price-main">599 ₽</div>
+                                <div class="price-old">1199 ₽</div>
+                                <div class="price-save">Экономия 50%</div>
+                            </div>
+                            
+                            <button class="card-bottom-btn btn-premium">
+                                <span>Приобрести всё включено</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-arrow arrow-right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Индикаторы -->
+            <div class="carousel-dots">
+                <div class="dot active" data-index="0"></div>
+                <div class="dot" data-index="1"></div>
+                <div class="dot" data-index="2"></div>
+            </div>
+
+            <!-- ИНН -->
+            <div class="inn-info">
+                ИНН: 622905171358
+            </div>
+        </main>
+    </div>
+
+    <script src="choice-screen.js"></script>
+</body>
+</html>
