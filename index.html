@@ -13,8 +13,8 @@
     <div class="star-field"></div>
     
     <div class="container">
-        <!-- Основной контент -->
-        <div class="content-wrapper">
+        <!-- Экран 1: Главный экран -->
+        <div id="mainScreen" class="content-wrapper active-screen">
             <header class="header">
                 <h1 class="logo">NUMERICAN</h1>
                 <div class="logo-subtitle">Магия чисел</div>
@@ -45,6 +45,103 @@
                             <span class="btn-text">О ТАЙНЕ NUMERICAN</span>
                         </div>
                     </button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Экран 2: Анимация загрузки -->
+        <div id="loadingScreen" class="content-wrapper">
+            <div class="loading-container">
+                <div class="crystal-ball">
+                    <div class="crystal-inner">
+                        <div class="crystal-glow"></div>
+                        <div class="crystal-sparkles">
+                            <div class="sparkle"></div>
+                            <div class="sparkle"></div>
+                            <div class="sparkle"></div>
+                            <div class="sparkle"></div>
+                            <div class="sparkle"></div>
+                        </div>
+                        <i class="fas fa-crystal-ball crystal-icon"></i>
+                    </div>
+                </div>
+                
+                <h2 class="loading-title">Подключение к энергии чисел</h2>
+                
+                <div class="loading-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="loading-text">
+                        <span class="loading-message">Анализируем космические вибрации...</span>
+                        <span class="loading-percentage">0%</span>
+                    </div>
+                </div>
+                
+                <p class="loading-subtitle">
+                    Искусственный интеллект медитирует над сочетаниями чисел
+                </p>
+            </div>
+        </div>
+
+        <!-- Экран 3: Форма ввода данных -->
+        <div id="formScreen" class="content-wrapper">
+            <header class="header">
+                <h1 class="logo">NUMERICAN</h1>
+                <div class="logo-subtitle">Введите ваши данные</div>
+            </header>
+            
+            <main class="main-content">
+                <div class="form-container">
+                    <div class="form-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    
+                    <h2 class="form-title">Ваш нумерологический портрет</h2>
+                    <p class="form-subtitle">Введите данные для создания уникального расклада</p>
+                    
+                    <form id="userForm" class="form">
+                        <div class="form-group">
+                            <label for="fullName" class="form-label">
+                                <i class="fas fa-signature"></i> Полное имя
+                            </label>
+                            <input type="text" id="fullName" class="form-input" 
+                                   placeholder="Как вас называют во Вселенной" required>
+                            <div class="form-hint">Введите имя, которое используете в жизни</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="birthDate" class="form-label">
+                                <i class="fas fa-calendar-star"></i> Дата рождения
+                            </label>
+                            <input type="date" id="birthDate" class="form-input" required>
+                            <div class="form-hint">День, когда вы начали свой земной путь</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userQuestion" class="form-label">
+                                <i class="fas fa-question-circle"></i> Ваш вопрос к Вселенной
+                            </label>
+                            <textarea id="userQuestion" class="form-textarea" 
+                                     placeholder="О чём вы хотите спросить числа? (необязательно)"
+                                     rows="3"></textarea>
+                            <div class="form-hint">Чем конкретнее вопрос, тем точнее ответ</div>
+                        </div>
+                        
+                        <div class="form-notice">
+                            <i class="fas fa-lock"></i>
+                            <span>Ваши данные используются единожды и удаляются после анализа</span>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="button" id="backBtn" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Назад
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-stars"></i> Создать расклад
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </main>
         </div>
