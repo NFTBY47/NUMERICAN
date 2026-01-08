@@ -11,7 +11,10 @@ class Carousel {
         this.backBtn = document.getElementById('backToMainBtn');
         
         this.currentIndex = 0;
-        this.cardWidth = 340;
+        
+        // Динамически определяем ширину карточки
+        this.cardWidth = this.cards[0].offsetWidth;
+        
         this.totalCards = this.cards.length;
         
         // Параметры для плавности
@@ -41,6 +44,12 @@ class Carousel {
         this.setupWheelEvents();
         this.initTelegramWebApp();
         this.updateCarousel();
+        
+        // Обновляем ширину при ресайзе
+        window.addEventListener('resize', () => {
+            this.cardWidth = this.cards[0].offsetWidth;
+            this.updateCarousel();
+        });
     }
     
     setupBackButton() {
@@ -170,6 +179,9 @@ class Carousel {
     }
     
     updateCarousel() {
+        // Обновляем ширину карточки (на случай ресайза)
+        this.cardWidth = this.cards[0].offsetWidth;
+        
         // Восстанавливаем transition
         this.carouselInner.style.transition = `transform ${this.animationDuration}ms cubic-bezier(0.23, 1, 0.32, 1)`;
         this.carouselInner.style.transform = `translateX(-${this.currentIndex * this.cardWidth}px)`;
@@ -432,6 +444,12 @@ class Carousel {
             Telegram.WebApp.ready();
             Telegram.WebApp.expand();
             Telegram.WebApp.setBackgroundColor('#0a0614');
+            
+            // Принудительный перерасчет размеров после загрузки
+            setTimeout(() => {
+                this.cardWidth = this.cards[0].offsetWidth;
+                this.updateCarousel();
+            }, 100);
             
             Telegram.WebApp.MainButton.text = "← Назад";
             Telegram.WebApp.MainButton.color = "#1a0f33";
