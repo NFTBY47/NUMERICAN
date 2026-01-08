@@ -6,9 +6,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const aboutPopup = document.getElementById('aboutPopup');
     const closePopup = document.getElementById('closePopup');
     const popupOverlay = document.querySelector('.popup-overlay');
+    const backBtn = document.getElementById('backBtn');
+    const userForm = document.getElementById('userForm');
+    
+    // Экранные элементы
+    const mainScreen = document.getElementById('mainScreen');
+    const loadingScreen = document.getElementById('loadingScreen');
+    const formScreen = document.getElementById('formScreen');
     
     // Отключение скролла на body
     document.body.style.overflow = 'hidden';
+    
+    // Функции переключения экранов
+    function showScreen(screenId) {
+        // Скрыть все экраны
+        [mainScreen, loadingScreen, formScreen].forEach(screen => {
+            screen.classList.remove('active-screen');
+        });
+        
+        // Показать нужный экран
+        document.getElementById(screenId).classList.add('active-screen');
+    }
     
     // Открытие попапа
     aboutBtn.addEventListener('click', function() {
@@ -32,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Кнопка "Получить расклад"
+    // Кнопка "Получить расклад" - переход к анимации загрузки
     getReportBtn.addEventListener('click', function() {
         // Анимация нажатия
         this.style.transform = 'scale(0.95)';
@@ -40,9 +58,41 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = '';
         }, 150);
         
-        // Показ сообщения о скором запуске
-        showFormMessage();
+        // Переход к экрану загрузки
+        showScreen('loadingScreen');
+        
+        // Запуск анимации загрузки
+        startLoadingAnimation();
     });
+    
+    // Кнопка "Назад" из формы (если есть форма на этом экране)
+    if (backBtn) {
+        backBtn.addEventListener('click', function() {
+            showScreen('mainScreen');
+        });
+    }
+    
+    // Отправка формы (если есть форма на этом экране)
+    if (userForm) {
+        userForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Получаем данные формы
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                birthDate: document.getElementById('birthDate').value,
+                question: document.getElementById('userQuestion').value
+            };
+            
+            console.log('Данные формы:', formData);
+            
+            // Здесь будет логика отправки данных на сервер
+            // и переход к следующему экрану с результатами
+            
+            // Временное сообщение
+            showFormMessage('Расклад создаётся... Древняя мудрость чисел анализирует ваши данные.');
+        });
+    }
     
     // Блокировка скролла при касании на попапе
     const popupBody = document.querySelector('.popup-body');
@@ -56,16 +106,69 @@ document.addEventListener('DOMContentLoaded', function() {
     initTelegramWebApp();
 });
 
-// Функция для показа сообщения о форме
-function showFormMessage() {
+// Функция анимации загрузки
+function startLoadingAnimation() {
+    const progressFill = document.querySelector('.progress-fill');
+    const loadingPercentage = document.querySelector('.loading-percentage');
+    const loadingMessages = [
+        'Настраиваем канал связи с числами...',
+        'Вычисляем нумерологические паттерны...',
+        'Подключаемся к энергии Вселенной...',
+        'Создаём ваше персональное пространство...'
+    ];
+    
+    let progress = 0;
+    const duration = 3000; // 3 секунды
+    const interval = 30;
+    const steps = duration / interval;
+    const increment = 100 / steps;
+    
+    let messageIndex = 0;
+    const loadingMessage = document.querySelector('.loading-message');
+    
+    const progressInterval = setInterval(() => {
+        progress += increment;
+        
+        if (progress > 100) {
+            progress = 100;
+            clearInterval(progressInterval);
+            
+            // Переход к экрану выбора после завершения загрузки
+            setTimeout(() => {
+                // Открываем новый экран с выбором расклада
+                window.location.href = 'choice-screen.html';
+            }, 500);
+        }
+        
+        // Обновление прогресс-бара
+        progressFill.style.width = progress + '%';
+        loadingPercentage.textContent = Math.round(progress) + '%';
+        
+        // Смена сообщений
+        if (progress >= 25 && messageIndex === 0) {
+            loadingMessage.textContent = loadingMessages[1];
+            messageIndex = 1;
+        } else if (progress >= 50 && messageIndex === 1) {
+            loadingMessage.textContent = loadingMessages[2];
+            messageIndex = 2;
+        } else if (progress >= 75 && messageIndex === 2) {
+            loadingMessage.textContent = loadingMessages[3];
+            messageIndex = 3;
+        }
+        
+    }, interval);
+}
+
+// Функция для показа сообщения
+function showFormMessage(text) {
     // Создаем сообщение
     const message = document.createElement('div');
     message.className = 'form-message';
     message.innerHTML = `
         <div class="message-content">
             <i class="fas fa-crystal-ball"></i>
-            <h3>Магия чисел готовится</h3>
-            <p>Форма для получения персонального расклада скоро откроется</p>
+            <h3>Магия чисел в действии</h3>
+            <p>${text}</p>
             <button class="close-message">ПОНЯТНО</button>
         </div>
     `;
@@ -207,11 +310,11 @@ function initTelegramWebApp() {
 // Настройка под размеры Telegram WebApp
 function adjustForViewport() {
     const viewportHeight = window.innerHeight;
-    const content = document.querySelector('.content-wrapper');
+    const content = document.querySelector('.content-wrapper.active-screen');
     
-    if (viewportHeight < 600) {
+    if (content && viewportHeight < 600) {
         content.style.gap = '20px';
-    } else {
+    } else if (content) {
         content.style.gap = '30px';
     }
 }
